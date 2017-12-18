@@ -11107,14 +11107,30 @@ $(document).ready(function () {});
 
 var $ = __webpack_require__(0);
 var API = 'https://color-swatch-api.herokuapp.com/api/v1/';
+var responses = __webpack_require__(10);
 
 function topColor() {
   return $.get(API + 'top_color', function (data) {
-    $('span.top-color').append(data.value + ', count: ' + data.color_count);
+    responses.appendTopColor(data);
   });
 }
 
 module.exports = { topColor: topColor };
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var $ = __webpack_require__(0);
+
+function appendTopColor(data) {
+  $('span.top-color').append(data.value + ', count: ' + data.color_count);
+}
+
+module.exports = { appendTopColor: appendTopColor };
 
 /***/ })
 /******/ ]);
